@@ -6,6 +6,8 @@ def init():
     WHITE = (255,255,255)
     global BLACK
     BLACK = (0,0,0)
+    global GRAY
+    GRAY = (65,65,65)
     global GREEN
     GREEN = (0,255,0)
     global PURPLE
@@ -26,8 +28,8 @@ def init():
     DARKBLUE = (5, 10, 245)
     global PINK
     PINK = (245, 5, 193)
-    global HOTPINK
-    HOTPINK = (245, 5, 193)
+    global YELLOW
+    YELLOW = (255,255,0)
     global DARKRED
     DARKRED = (110, 0, 0)
 class utility:
