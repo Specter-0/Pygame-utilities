@@ -75,7 +75,7 @@ def main(running):
     sun = Planet(0, 0, 30, pgu.YELLOW, 1.98892 * 10**30)
     sun.sun = True
 
-    earth = Planet(-1 * Planet.AU, 0, 16, pgu.BLUE, 5.9742 * 10*24)
+    earth = Planet(-1 * Planet.AU, 0, 16, pgu.BLUE, 5.9742 * 10**24)
     earth.y_vel = 29.783 * 1000
 
     mars = Planet(-1.524 * Planet.AU, 0, 12, pgu.RED, 6.39 * 10**23)
