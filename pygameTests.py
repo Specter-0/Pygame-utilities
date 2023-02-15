@@ -6,7 +6,7 @@ pgu.init()
 
 
 
-width = 800
+width = 1350
 height = 800
 win = pg.display.set_mode([width, height])
 
@@ -84,7 +84,7 @@ def main(running):
     mercury = Planet(-0.387 * Planet.AU, 0, 8, pgu.GRAY, 0.330 * 10**24)
     mercury.y_vel = 47.4 * 1000
 
-    venus = Planet(-0.723 * Planet.AU, 0, 14, pgu.WHITE, 4.8685 * 10**24)
+    venus = Planet(-0.723 * Planet.AU, 0, 14, pgu.WHITE, 1.8685 * 10**24)
     venus.y_vel = 35.02 * 1000
 
     planets = [sun, earth, mars, mercury, venus]
