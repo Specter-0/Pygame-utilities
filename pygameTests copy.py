@@ -14,16 +14,16 @@ def main(running):
 
     sun = pgu.utility.gravity_create_object(0, 0, 30, 1.98892 * 10**30, pgu.YELLOW) #1.98892 * 10**30
 
-    earth = pgu.utility.gravity_create_object(-1, 0, 16, 6.9742 * 10**24) #6.9742 * 10**24
+    earth = pgu.utility.gravity_create_object(-1, 0, 16, 6.9742 * 10**24, pgu.BLUE) #6.9742 * 10**24
     earth.y_vel = 29.783 * 1000
 
-    mars = pgu.utility.gravity_create_object(-1.524, 0, 12, 6.39 * 10**23) #6.39 * 10**23
+    mars = pgu.utility.gravity_create_object(-1.524, 0, 12, 6.39 * 10**23, pgu.DARKRED) #6.39 * 10**23
     mars.y_vel = 24.077 * 1000
 
-    mercury = pgu.utility.gravity_create_object(-0.387, 0, 8, 0.330 * 10**24) #0.330 * 10**24
+    mercury = pgu.utility.gravity_create_object(-0.387, 0, 8, 0.330 * 10**24, pgu.GRAY) #0.330 * 10**24
     mercury.y_vel = 47.4 * 1000
 
-    venus = pgu.utility.gravity_create_object(-0.723, 0, 14, 1.8685 * 10**24) #1.8685 * 10**24
+    venus = pgu.utility.gravity_create_object(-0.723, 0, 14, 1.8685 * 10**24, pgu.ORANGE) #1.8685 * 10**24
     venus.y_vel = 35.02 * 1000
 
     objects = [sun, earth, mars, mercury, venus]

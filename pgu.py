@@ -98,6 +98,7 @@ class utility:
             force_x = math.cos(v) * force
             force_y = math.sin(v) * force
             return force_x, force_y
+            
         
         def update_pos(self, objects):
             total_fx = total_fy = 0
@@ -105,7 +106,9 @@ class utility:
             for object in objects:
                 if self == object:
                     continue
-                total_fx, total_fy = self.attraction(object)
+                fx, fy = self.attraction(object)
+                total_fx += fx
+                total_fy += fy
 
             self.x_vel += total_fx / self.mass * TIMESTEP
             self.y_vel += total_fy / self.mass * TIMESTEP
