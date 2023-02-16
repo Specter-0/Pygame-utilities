@@ -10,11 +10,11 @@ width = 1350
 height = 800
 win = pg.display.set_mode([width, height])
 
-class Planet(pg.sprite.Sprite, pgu.utility.sprite.movement):
+class Planet(pg.sprite.Sprite, pgu.utility.sprite):
     AU = 149.6e6 * 1000
     G = 6.67428e-11
-    SCALE = 250 / AU # 1AU = 100px
-    TIMESTEP = 3600*24 # 1 day
+    SCALE = 200 / AU # 1AU = 100px
+    TIMESTEP = 3600*30 # 1 day
 
     def __init__(self, x, y, radius, color, mass):
         self.x = x
