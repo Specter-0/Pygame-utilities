@@ -63,16 +63,18 @@ class utility:
             """
             object.rect.center = (x, y)
 
-    def gravity_set_values(scale = 200, timestep = 3600*24, au = 149.6e6 * 1000, g = 6.67428e-11):
+    class Gravity():
+        def set_values(scale = 200, timestep = 3600*24, au = 149.6e6 * 1000, g = 6.67428e-11):
             global AU, G, SCALE, TIMESTEP
             AU = au # astronomical units --149.6e6 * 1000
             SCALE = scale / AU # 1AU = 100px --200
             TIMESTEP = timestep # 1 day --3600*24
-            G = g # gravitational constant
-    def gravity_set_timestep(timestep = 3600*24):
-        global TIMESTEP
-        TIMESTEP = timestep
-    class Gravity():    
+            G = g # gravitational constant 6.67428e-11
+
+        def set_timestep(timestep = 3600*24):
+            global TIMESTEP
+            TIMESTEP = timestep
+
         def __init__(self, x, y, y_vel, radius, mass, color=(255,255,255)): 
             self.tracking = False
             self.x = x * AU
@@ -119,7 +121,7 @@ class utility:
             distance_y = other_y - self.y
             distance = math.sqrt(distance_x ** 2 + distance_y ** 2)
             
-            force = G * self.mass * other.mass /distance**2
+            force = G * self.mass * other.mass / distance**2
             v = math.atan2(distance_y, distance_x)
             force_x = math.cos(v) * force
             force_y = math.sin(v) * force
