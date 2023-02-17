@@ -63,20 +63,32 @@ class utility:
             """
             object.rect.center = (x, y)
 
-    def gravity_set_values(au, scale, timestep):
+    def gravity_set_values(scale = 200, timestep = 3600*24, au = 149.6e6 * 1000, g = 6.67428e-11):
             global AU, G, SCALE, TIMESTEP
             AU = au # astronomical units --149.6e6 * 1000
             SCALE = scale / AU # 1AU = 100px --200
             TIMESTEP = timestep # 1 day --3600*24
-            G = 6.67428e-11 # gravitational constant
-    def gravity_set_timestep(timestep):
-        try: 
-            TIMESTEP = timestep
-        except:
-            pass
-    class gravity():       
-        def path_track(self):
+            G = g # gravitational constant
+    def gravity_set_timestep(timestep = 3600*24):
+        global TIMESTEP
+        TIMESTEP = timestep
+    class Gravity():    
+        def __init__(self, x, y, y_vel, radius, mass, color=(255,255,255)): 
+            self.tracking = False
+            self.x = x * AU
+            self.y = y 
+            self.radius = radius
+            self.mass = mass
+            self.color = color
             self.path = []
+
+            #self.sun = False
+            #self.distance_to_sun = 0
+
+            self.y_vel = y_vel
+            self.x_vel = 0
+           
+        def path_track(self):
             self.tracking = True
         
         def draw(self, win, width, height):
@@ -84,14 +96,28 @@ class utility:
             y = self.y * SCALE + height / 2
             pg.draw.circle(win, self.color, (x, y), self.radius)
 
+        def draw_path(self, win, width, height):
+            x = self.x * SCALE + width / 2
+            y = self.y * SCALE + height / 2
+
+            if len(self.path) > 2:
+                updated_path = []
+                for point in self.path:
+                    x, y = point
+                    x = x * SCALE + width / 2
+                    y = y * SCALE + height / 2
+                    updated_path.append((x, y))
+
+                pg.draw.lines(win, self.color, False, updated_path, 2)
+
+        def path_clear(self):
+            self.path.clear()
+
         def attraction(self, other):
             other_x, other_y = other.x, other.y
             distance_x = other_x - self.x
             distance_y = other_y - self.y
             distance = math.sqrt(distance_x ** 2 + distance_y ** 2)
-
-            #if other.sun:
-                #self.distance_to_sun = distance
             
             force = G * self.mass * other.mass /distance**2
             v = math.atan2(distance_y, distance_x)
@@ -118,20 +144,9 @@ class utility:
 
             if self.tracking:
                 self.path.append((self.x, self.y))
-
-    class gravity_create_object(gravity):
-        def __init__(self, x, y, radius, mass, color=(255,255,255)): 
-            self.tracking = False
-            self.x = x * AU
-            self.y = y 
-            self.radius = radius
-            self.mass = mass
-            self.color = color
-
-            #self.sun = False
-            #self.distance_to_sun = 0
-
-            self.y_vel = 0
-            self.x_vel = 0
+        
+        def lock(self, width, height):
+            self.x = width
+            self.y = height
         
 
