@@ -7,12 +7,14 @@ pgu.init()
 width = 1350
 height = 800
 win = pg.display.set_mode([width, height])
-pgu.utility.Gravity.set_values(100)
-pgu.utility.Gravity.set_timestep(3600*24)
+pgu.utility.Gravity.set_values(100) #sette globale verider for Gravity klassen
+pgu.utility.Gravity.set_timestep(3600*24) #sette timestep
 
+#main loop
 def main(running):
-    clock = pg.time.Clock()
+    clock = pg.time.Clock() #del en av fps limit
 
+    # lager Gravity objekter
     sun = pgu.utility.Gravity(0, 0, 0, 30, 1.98892 * 10**30, pgu.YELLOW) #1.98892 * 10**30
 
     earth = pgu.utility.Gravity(-1, 0, 29.783 * 1000, 16, 6.9742 * 10**24, pgu.BLUE) #6.9742 * 10**24
@@ -28,21 +30,20 @@ def main(running):
     objects = [sun, earth, mars, mercury, venus, jupiter]
 
     for object in objects:
-        object.path_track()
+        object.path_track() #skrur på path_tracking for alle objektene i objekts
 
     while running:
-        clock.tick(144)
+        clock.tick(144) # fps cap
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 running = False
  
         win.fill((pgu.BLACK))
 
-        for object in objects:
+        for object in objects: #opptaterer og tegner objektene på skjermen
             object.update_pos(objects)
             object.draw(win, width, height)
             object.draw_path(win, width, height)
-            #object.draw_path(win, width, height)
 
         pg.display.flip()   
 

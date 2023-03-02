@@ -1,0 +1,12 @@
+I = 0
+while True:
+    try:
+        myList.append("i")
+        if myList[5] == "i":
+            break
+    except NameError:
+        myList = []
+    except IndexError:
+        pass
+    I += 1
+print(I)

@@ -72,7 +72,7 @@ class Planet(pg.sprite.Sprite, pgu.utility.sprite):
 def main(running):
     clock = pg.time.Clock()
 
-    sun = Planet(0, 0, 30, pgu.YELLOW, 1.98892 * 10**30) #1.98892 * 10**30
+    sun = Planet(0, 0, 30, pgu.YELLOW, 3.98892 * 10**30) #1.98892 * 10**30
     sun.sun = True
 
     earth = Planet(-1 * Planet.AU, 0, 16, pgu.BLUE, 6.9742 * 10**24) #6.9742 * 10**24
